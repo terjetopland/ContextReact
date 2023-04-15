@@ -6,7 +6,7 @@ import MyContext from "../context/MyContext";
 export const Parent = () => {
 
     // Get the data set in grandchild
-    const {area, setIsCalculating} = useContext(MyContext);
+    const {area, addInputField, inputList, handleInputChange } = useContext(MyContext);
 
 
 
@@ -14,7 +14,7 @@ export const Parent = () => {
         <View>
             <Text>I am Parent, and I am displaying this value {area}.</Text>
             <Text>This is set in the GrandChild through context.</Text>
-            <Child/>
+            <Child inputList={inputList} addInputField={addInputField} inputHandler={handleInputChange}/>
             <Button>Calculate and set the the total area of all grandChildren</Button>
         </View>
     )
