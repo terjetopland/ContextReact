@@ -6,7 +6,7 @@ import MyContext from "../context/MyContext";
 export const Parent = () => {
 
     // Get the data set in grandchild
-    const {area, addInputField, inputList, handleInputChange } = useContext(MyContext);
+    const {area, addInputField, inputList, handleInputChange, removeInputField } = useContext(MyContext);
 
 
 
@@ -14,8 +14,12 @@ export const Parent = () => {
         <View>
             <Text>I am Parent, and I am displaying this value {area}.</Text>
             <Text>This is set in the GrandChild through context.</Text>
-            <Child inputList={inputList} addInputField={addInputField} inputHandler={handleInputChange}/>
-            <Button>Calculate and set the the total area of all grandChildren</Button>
+            <Child inputList={inputList} addInputField={addInputField} inputHandler={handleInputChange} removeInputField={removeInputField}/>
+            {inputList.map((inputField) => (
+                        <Text>{inputField.value} belongs to input field nr: {inputField.id + 1}</Text>
+                ))}
+
+
         </View>
     )
 }

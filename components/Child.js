@@ -1,7 +1,7 @@
 import {Button, Text, View} from "react-native";
 import {GranChild} from "./GranChild";
 
-export const Child = ({inputList, addInputField, inputHandler}) => {
+export const Child = ({inputList, addInputField, removeInputField, inputHandler}) => {
     return (
         <View>
             <Text>I am Child</Text>
@@ -14,6 +14,7 @@ export const Child = ({inputList, addInputField, inputHandler}) => {
                 />
             ))}
             <Button title={'Add input field'} onPress={addInputField}/>
+            <Button title={'Remove input field'} onPress={removeInputField}/>
         </View>
     )
 }

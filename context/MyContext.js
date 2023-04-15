@@ -1,4 +1,4 @@
-import {createContext, useState} from "react";
+import {createContext, useEffect, useState} from "react";
 
 const MyContext = createContext({});
 
@@ -30,6 +30,13 @@ export const MyContextProvider = ({children}) => {
     const addInputField = () => {
         setInputList([...inputList, { id: inputList.length, value: ''}]);
     };
+    const removeInputField = () => {
+        setInputList(inputList.slice(0,-1));
+    }
+    useEffect(() => {
+        const sum = inputList.reduce((accumulator, input) => accumulator + input.value, 0 );
+        setArea(sum)
+    })
 
     const value = {
         area,
@@ -40,6 +47,7 @@ export const MyContextProvider = ({children}) => {
         setInputList,
         handleInputChange,
         addInputField,
+        removeInputField
     }
 
     return (
